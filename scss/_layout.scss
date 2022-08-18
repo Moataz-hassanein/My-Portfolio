@@ -1,0 +1,360 @@
+/* mixin & extend */
+
+@mixin h2-style($color) {
+  font-size: 3vw;
+  text-align: center;
+  @extend %linear-gred;
+  font-family: $main-font;
+  border-bottom: 1px solid $color;
+  padding-bottom: 3.5vh;
+}
+@mixin projects-hover($bg) {
+  background: $bg;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 0;
+}
+
+%linear-gred {
+  background: $gold-font;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+%projects-style {
+  text-align: center;
+  padding-top: 18vh;
+  font-size: 2vw;
+  width: 15vw;
+  height: 40vh;
+  display: block;
+  color: $secondary;
+  font-weight: 600;
+  text-shadow: 6px 8px 13px rgba(128, 135, 19, 0.295);
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 5px $primary;
+  transition: 0.5s ease-in-out 0.2s;
+}
+
+%white-bg {
+  background-image: url(../images/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* mixin & extend */
+
+/* first section */
+.h-container {
+  display: flex;
+  header {
+    border-right: 1px solid $white;
+    width: 10vw;
+    background-color: $primary;
+
+    img {
+      width: 10vw;
+    }
+
+    nav {
+      padding-top: 15vh;
+
+      li {
+        list-style-type: none;
+        text-align: center;
+        border-bottom: 1px solid $white;
+        transition: 0.3s ease-in-out 0.1s;
+        &:hover {
+          background-color: #1394d9a6;
+          border-radius: 10px;
+          transform: scale(0.9, 0.9);
+        }
+        &:nth-of-type(4) {
+          border-bottom: none;
+        }
+        a {
+          text-decoration: none;
+          padding: 1rem 0;
+
+          display: block;
+          font-family: $main-font;
+          font-weight: 600;
+          @extend %linear-gred;
+          font-size: 1.6vw;
+        }
+      }
+    }
+  }
+  .home{
+    background-color: $primary;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    h1 {
+      color: $white;
+      width: 50%;
+      font-size: 6vw;
+      font-weight: 100;
+      @extend %linear-gred;
+      font-family: $heading-font;
+      pre {
+        font-family: $heading-font;
+      }
+    }
+    div {
+      width: 34%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+/* second section */
+main {
+  .bg {
+    @extend %white-bg;
+    .about {
+      padding: 10vh 0;
+      h2 {
+        @include h2-style($primary);
+      }
+      p {
+        padding-top: 10vh;
+        font-size: 2vw;
+        line-height: 1.5;
+        font-family: $heading-font;
+        color: $secondary;
+      }
+    }
+  }
+  /* third section */
+  .skills-bg {
+    background-color: $primary;
+    .my-skills {
+      padding: 10vh 0;
+
+      h2 {
+        @include h2-style($white);
+      }
+      .skills {
+        text-align: center;
+        padding-top: 1vh;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        div {
+          width: 25vw;
+          img {
+            width: 50%;
+          }
+        }
+        .css {
+          grid-column: 3/4;
+        }
+
+        .js {
+          grid-column: 2/3;
+        }
+        .scss {
+          grid-row: 3/4;
+        }
+
+        .bootstrap {
+          grid-row: 3/4;
+          grid-column: 3/4;
+        }
+
+        span {
+          color: $white;
+          display: block;
+          font-size: 1.7vw;
+          font-weight: 600;
+          font-family: $main-font;
+        }
+      }
+    }
+  }
+  /* fourth section */
+  .projects-bg {
+    @extend %white-bg;
+    .my-projects {
+      padding: 2rem 0;
+      h2 {
+        @include h2-style($primary);
+      }
+      .projects {
+        padding-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 2rem;
+
+        .cv {
+          @extend %projects-style;
+          &:hover {
+            @include projects-hover(url(../images/cv.PNG));
+          }
+        }
+
+        .rest {
+          @extend %projects-style;
+          &:hover {
+            @include projects-hover(url(../images/restaurant.png));
+          }
+        }
+        .social {
+          @extend %projects-style;
+          &:hover {
+            @include projects-hover(url(../images/social.jpg));
+          }
+        }
+        .modernist {
+          @extend %projects-style;
+          &:hover {
+            @include projects-hover(url(../images/modernist.jpg));
+          }
+        }
+        .photographer {
+          @extend %projects-style;
+          &:hover {
+            @include projects-hover(url(../images/photographer.jpg));
+          }
+        }
+        .hotel {
+          @extend %projects-style;
+          &:hover {
+            @include projects-hover(url(../images/hotel.jpg));
+          }
+        }
+        .marketing {
+          @extend %projects-style;
+          &:hover {
+            @include projects-hover(url(../images/marketing.jpg));
+          }
+        }
+        .office {
+          @extend %projects-style;
+          &:hover {
+            @include projects-hover(url(../images/office.jpg));
+          }
+        }
+      }
+    }
+  }
+  /* fifth section */
+  .contact-bg {
+    background-color: $primary;
+
+    .contact {
+      padding-top: 10vh;
+      h2 {
+        @include h2-style($white);
+      }
+      .form {
+        
+        padding: 5vh 0;
+        display: flex;
+        justify-content: space-between;
+        input {
+          width: 50vw;
+          height: 6vh;
+          margin: 1.5vh 0;
+          padding: 2%;
+          font-size: 1.4vw;
+          color: $secondary;
+          font-family: $main-font;
+          outline: none;
+          &::placeholder {
+            font-size: 1.4vw;
+            color: $secondary;
+            font-family: $main-font;
+            font-weight: 600;
+          }
+        }
+        textarea {
+          width: 50vw;
+          margin: 1.5rem 0;
+          padding: 2%;
+          outline: none;
+          resize: none;
+          font-size: 1.4vw;
+          color: $secondary;
+          font-family: $main-font;
+          &::placeholder {
+            font-size: 1.4vw;
+            color: $secondary;
+            font-family: $main-font;
+            font-weight: 600;
+          }
+        }
+        button {
+          display: block;
+          margin: auto;
+          font-size: 1.7vw;
+          padding: 1vh 3vw;
+          border-radius: 10px;
+          border: none;
+          font-family: $main-font;
+          font-weight: 600;
+          background-color: gold;
+          color: $secondary;
+          cursor: pointer;
+          &:hover {
+            background-color: $primary;
+            color: $white;
+            border: 2px solid $white;
+          }
+        }
+        .image {
+          width: 100%;
+
+          img {
+            width: 100%;
+            &:hover {
+              animation-name: move;
+              animation-duration: 6s;
+              animation-timing-function: ease-in-out;
+              animation-delay: 0.5s;
+              animation-fill-mode: forwards;
+            }
+
+            @keyframes move {
+              25% {
+                transform: translate(-550px, -320px);
+              }
+              50% {
+                transform: translate(-1550px, 590px) scale(0.1, 0.1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+footer {
+  background-color: $primary;
+  position: relative;
+
+  .links {
+    text-align: center;
+    padding: 2rem 0;
+    i {
+      font-size: 3vw;
+      @extend %linear-gred;
+      padding-left: 5vw;
+      cursor: pointer;
+    }
+  }
+
+  .fa-solid {
+    font-size: 4vw;
+    @extend %linear-gred;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+  }
+}
